@@ -7,10 +7,12 @@ import CustomersPage from './pages/Customers'
 import NotFoundPage from './pages/not-found'
 import ErrorBoundary from './providers/ErrorBoundary'
 import { QueryProviders } from './providers/queryProvider'
+import { Toaster } from 'sonner'
 
 function App() {
   return (
     <QueryProviders>
+      <Toaster position="top-center" />
       <BrowserRouter>
         <ErrorBoundary>
           <GlobalNavigationBar />
