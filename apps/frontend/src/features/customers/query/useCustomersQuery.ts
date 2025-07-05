@@ -28,5 +28,6 @@ export const useCustomerDetailQuery = (id: number) => {
       const response = await getCustomerDetail(id)
       return customerDetailDataSchema.parse(response)
     },
+    enabled: id > 0,
   })
 }
