@@ -1,4 +1,4 @@
-import { STATUS_CODE } from './statusCode'
+import { STATUS_CODE } from './constant/statusCode'
 
 const BASE_URL = 'http://localhost:4000'
 const PREFIX = '/api'
@@ -11,7 +11,8 @@ const originalRequest = async <T>(url: string, options: RequestInit): Promise<T>
   try {
     const response = await fetch(`${BASE_URL}${PREFIX}${url}`, options)
     if (!response.ok) checkResponseError(response)
-    return response.json()
+
+    return await response.json()
   } catch (error) {
     throw new Error(String(STATUS_CODE.INTERNAL_SERVER_ERROR))
   }
