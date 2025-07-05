@@ -14,6 +14,20 @@ const Analytics = () => {
 
   const { data, isLoading } = usePurchaseFrequencyQuery(currentQuery)
 
+  const handleFromChange = (value: string) => {
+    setFrom(value)
+    if (new Date(value) > new Date(to)) {
+      setTo(value)
+    }
+  }
+
+  const handleToChange = (value: string) => {
+    setTo(value)
+    if (new Date(value) < new Date(from)) {
+      setFrom(value)
+    }
+  }
+
   const handleSearch = () => {
     setCurrentQuery({
       from,
@@ -41,7 +55,8 @@ const Analytics = () => {
               id="start-date"
               type="date"
               value={from}
-              onChange={(e) => setFrom(e.target.value)}
+              max={to}
+              onChange={(e) => handleFromChange(e.target.value)}
               className="w-full"
             />
           </div>
@@ -49,7 +64,14 @@ const Analytics = () => {
             <label htmlFor="end-date" className="block text-sm font-medium text-gray-700 mb-2">
               종료일
             </label>
-            <Input id="end-date" type="date" value={to} onChange={(e) => setTo(e.target.value)} className="w-full" />
+            <Input
+              id="end-date"
+              type="date"
+              value={to}
+              min={from}
+              onChange={(e) => handleToChange(e.target.value)}
+              className="w-full"
+            />
           </div>
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700 mb-2">&nbsp;</label>
