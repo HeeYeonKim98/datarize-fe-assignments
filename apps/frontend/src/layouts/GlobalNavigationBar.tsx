@@ -27,7 +27,7 @@ const GlobalNavigationBar = () => {
   ]
 
   return (
-    <nav className="bg-white shadow-md border-b">
+    <nav className="bg-white shadow-sm border-b">
       <div className="flex items-center h-20 gap-6 px-8">
         <div className="text-2xl font-bold text-gray-900">Datarize Admin</div>
 

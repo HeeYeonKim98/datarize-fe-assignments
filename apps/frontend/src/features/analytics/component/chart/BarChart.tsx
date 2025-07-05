@@ -2,7 +2,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 import { Bar } from 'react-chartjs-2'
 import { PurchaseFrequencyData } from '@/apis/analytics/type'
 import LoadingSpinner from '@/components/loading/LoadingSpinner'
-import BarChartLegend from './BarChartLegend'
+import getRangeLabel from '../../util/getRangeLabel'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -13,7 +13,7 @@ type Props = {
 
 const BarChart = ({ data, isLoading }: Props) => {
   const chartData = {
-    labels: data.map((item) => item.range),
+    labels: data.map((item) => getRangeLabel(item.range)),
     datasets: [
       {
         label: '구매 빈도',
@@ -29,18 +29,6 @@ const BarChart = ({ data, isLoading }: Props) => {
           '#F97316', // orange-500
           '#06B6D4', // cyan-500
         ],
-        borderColor: [
-          '#2563EB', // blue-600
-          '#059669', // green-600
-          '#D97706', // yellow-600
-          '#DC2626', // red-600
-          '#7C3AED', // purple-600
-          '#4B5563', // gray-600
-          '#DB2777', // pink-600
-          '#EA580C', // orange-600
-          '#0891B2', // cyan-600
-        ],
-        borderWidth: 1,
       },
     ],
   }
@@ -85,7 +73,6 @@ const BarChart = ({ data, isLoading }: Props) => {
           가격대별 구매 빈도 차트
         </label>
         <div className="h-96">{renderChartContent()}</div>
-        <BarChartLegend />
       </div>
     </>
   )
