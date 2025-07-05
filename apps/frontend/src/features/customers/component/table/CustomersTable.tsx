@@ -1,10 +1,12 @@
 import { flexRender } from '@tanstack/react-table'
+import { useState } from 'react'
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { CustomerData } from '@/apis/customers/type'
 import { useCustomersTable } from '../../hook/useCustomersTable'
 import SortCell from './header/SortCell'
+import CustomerDetailDialog from '../dialog/CustomerDetailDialog'
 
 type Props = {
   tableItems: CustomerData
@@ -12,9 +14,16 @@ type Props = {
 
 const CustomersTable = ({ tableItems }: Props) => {
   const table = useCustomersTable({ tableItems })
+  const [selectedCustomer, setSelectedCustomer] = useState<{ id: number; name: string } | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const onClickRow = (customerId: number) => {
-    console.log('Customer clicked:', customerId)
+  const onClickRow = (customerId: number, customerName: string) => {
+    setSelectedCustomer({ id: customerId, name: customerName })
+    setIsModalOpen(true)
+  }
+
+  const onOpenChange = (open: boolean) => {
+    setIsModalOpen(open)
   }
 
   return (
@@ -55,7 +64,7 @@ const CustomersTable = ({ tableItems }: Props) => {
                       <TableCell
                         key={cell.id}
                         className={cn('cursor-pointer', cell.column.columnDef.meta?.className)}
-                        onClick={() => onClickRow(row.original.id)}
+                        onClick={() => onClickRow(row.original.id, row.original.name)}
                       >
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </TableCell>
@@ -71,6 +80,14 @@ const CustomersTable = ({ tableItems }: Props) => {
           )}
         </div>
       </div>
+
+      {/* 고객 상세 다이얼로그 */}
+      <CustomerDetailDialog
+        customerId={selectedCustomer?.id ?? 0}
+        customerName={selectedCustomer?.name ?? ''}
+        isOpen={isModalOpen}
+        onOpenChange={onOpenChange}
+      />
     </div>
   )
 }
