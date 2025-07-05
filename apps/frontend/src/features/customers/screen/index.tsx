@@ -31,7 +31,7 @@ const Customers = () => {
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-md gap-4">
-        <label htmlFor="search" className="block font-medium text-gray-700 mb-2">
+        <label htmlFor="search" className="block text-[16px] font-bold text-gray-700 mb-2">
           고객명 검색
         </label>
         <div className="flex gap-2">
@@ -53,7 +53,7 @@ const Customers = () => {
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 gap-4 items-center">
-        <label className="block font-medium text-gray-700 mb-2">
+        <label className="block text-[16px] font-bold text-gray-700 mb-2">
           고객 목록 {data?.length ? `(총 ${data.length} 명)` : ''}
           {currentSearch && <span className="text-blue-600 ml-2">- "{currentSearch}" 검색 결과</span>}
         </label>
