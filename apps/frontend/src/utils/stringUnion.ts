@@ -1,3 +1,14 @@
+/**
+ * 문자열 유니온 타입 생성
+ * @param values 문자열 유니온 타입
+ * @returns 문자열 유니온 타입
+ * @example
+ * const routes = stringUnion('/analytics', '/customers')
+ * type RoutesType = typeof routes.type
+ * const route: RoutesType = '/analytics'
+ * const route: RoutesType = '/customers'
+ * const route: RoutesType = '/not-found' // Error
+ */
 export const stringUnion = <UnionType extends string>(...values: UnionType[]) => {
   Object.freeze(values)
   const valueSet: Set<string> = new Set(values)
