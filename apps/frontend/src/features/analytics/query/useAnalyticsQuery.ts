@@ -4,6 +4,7 @@ import { purchaseFrequencyDataSchema } from '@/apis/analytics/schema'
 import { PurchaseFrequencyPayload } from '@/apis/analytics/type'
 import { API_PURCHASE_FREQUENCY } from '@/apis/analytics/url'
 import { isApiErrorResponse } from '@/apis/fetcher/util'
+import { toast } from 'sonner'
 
 export const usePurchaseFrequencyQuery = (params: PurchaseFrequencyPayload) => {
   return useQuery({
@@ -12,7 +13,8 @@ export const usePurchaseFrequencyQuery = (params: PurchaseFrequencyPayload) => {
       const response = await getPurchaseFrequency(params)
 
       if (isApiErrorResponse(response)) {
-        throw new Error(response.error)
+        toast.error(response.error)
+        return null
       }
 
       return purchaseFrequencyDataSchema.parse(response)
