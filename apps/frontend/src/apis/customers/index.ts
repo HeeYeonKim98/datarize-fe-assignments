@@ -11,7 +11,12 @@ export const getCustomers = (params?: CustomersPayload) => {
 
   const url = searchParams.toString() ? `${API_CUSTOMERS}?${searchParams.toString()}` : API_CUSTOMERS
 
-  return fetcher<CustomerData>(url)
+  return fetcher<CustomerData>(url, {
+    method: 'GET',
+  })
 }
 
-export const getCustomerDetail = (id: number) => fetcher<CustomerDetailData>(API_CUSTOMERS_DETAIL(id))
+export const getCustomerDetail = (id: number) =>
+  fetcher<CustomerDetailData>(API_CUSTOMERS_DETAIL(id), {
+    method: 'GET',
+  })
