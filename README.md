@@ -1,56 +1,77 @@
 # Datarize Frontend 과제 전형
 
-## 실행 방법
+## ✔️ Getting Started
 
-## 체크리스트
+### Prerequisites
+- Node.js 18+ 
+- Yarn 1.22+
 
-### 1. 가격대별 구매 빈도 차트
+### Installation & Development
 
-- [ ] API 연동 (`GET /api/purchase-frequency`)
-- [ ] 가격대 구분 로직 구현 (2만원 이하 ~ 10만원 이상, 만원 단위)
-- [ ] 바 차트 컴포넌트 구현
-- [ ] 날짜 선택 기능 (from, to 파라미터)
-- [ ] 단일 날짜 조회 기능
-- [ ] 로딩 상태 처리
-- [ ] 에러 상태 처리
+```bash
+# 프로젝트 루트에서 실행
+yarn install
 
-### 2. 가장 많이 구매한 고객 목록 및 검색 기능
+# 백엔드 서버 실행 (포트 4000)
+yarn start-server
 
-- [x] API 연동 (`GET /api/customers`)
-- [x] 고객 목록 테이블 구현
-- [x] 고객 정보 표시 (ID, 이름, 총 구매 횟수, 총 구매 금액)
-- [x] 정렬 기능 (내림차순/오름차순)
-- [x] 기본 정렬 설정 (ID 기준)
-- [x] 이름 검색 기능
-- [x] 로딩 상태 처리
-- [x] 에러 상태 처리
+# 프론트엔드 개발 서버 실행 (포트 5173)
+yarn start-client
+```
 
-### 3. 고객 ID 기반 상세 기능
+</br>
 
-- [ ] API 연동 (`GET /api/customers/{id}/purchases`)
-- [ ] 고객 Row 클릭 이벤트 처리
-- [ ] 상세 구매 내역 모달/페이지 구현
-- [ ] 구매 날짜 표시
-- [ ] 구매한 제품 목록 표시
-- [ ] 각 제품의 가격 표시
-- [ ] 상품 썸네일 표시
-- [ ] 로딩 상태 처리
-- [ ] 에러 상태 처리
+## ✔️ 구현 완료 기능
 
-### 4. 기술적 구현 사항
+### 가격대별 구매 빈도 분석
+- 날짜 범위 선택을 통한 구매 데이터 필터링
+- Chart.js를 활용한 인터랙티브 바 차트
+- 가격대별 구매 빈도 시각화 (2만원 이하 ~ 10만원 이상)
+- 실시간 데이터 업데이트 및 로딩/에러 상태 관리
 
-- [ ] 프로젝트 초기 설정 완료
-- [ ] 상태 관리 라이브러리 선택 및 설정
-- [ ] 차트 라이브러리 선택 및 설정
-- [ ] CSS 프레임워크 설정
-- [ ] API 클라이언트 구현
-- [ ] 라우팅 설정
-- [ ] 에러 바운더리 구현
-- [ ] 로딩 스피너 구현
+### 고객 관리 시스템
+- 고객 목록 테이블 (ID, 이름, 구매 횟수, 총 구매 금액)
+- 실시간 이름 검색 기능
+- 프론트엔드에서 모든 컬럼 정렬 기능 구현 (오름차순/내림차순)
+- 고객 상세 정보 모달
 
-### 5. 추가 요구 사항
+### 고객 상세 구매 내역
+- 고객별 구매 내역 상세 조회
+- 구매 날짜, 상품명, 수량, 가격 정보 표시
+- 상품 썸네일 이미지 지원
 
-- [ ] 코드에 적절한 주석 추가
-- [ ] 유닛 테스트 작성 (선택사항)
-- [ ] README 업데이트 (프로젝트 설정 및 실행 방법)
-- [ ] 코드 품질 검토 및 리팩토링
+</br>
+
+## ✔️ Tech Stack
+- **Frontend Framework**: React, React DOM, React Router DOM
+- **Language**: TypeScript
+- **State Management**: TanStack Query (React Query v5)
+- **Styling**: Tailwind CSS
+- **Charts**: Chart.js, react-chartjs-2
+- **UI Components**: shadcn/ui
+- **Form Validation**: zod
+- **Code Quality**: ESLint, Prettier
+
+</br>
+
+## ✔️ Folder Structure
+```
+frontend/
+├── src/
+│ ├── apis/          # API 통신 레이어 - 백엔드 API 호출 함수 및 타입 정의
+│ ├── components/    # 공통 UI 컴포넌트 - 재사용 가능한 컴포넌트들
+│ ├── features/      # 기능별 모듈 - 각 페이지/기능별 로직과 컴포넌트
+│ ├── layouts/       # 레이아웃 컴포넌트 - 전체 앱 레이아웃 및 네비게이션
+│ ├── lib/           # 외부 라이브러리 설정 - 유틸리티 함수 및 설정
+│ ├── pages/         # 페이지 컴포넌트 - 라우팅될 메인 페이지들
+│ ├── providers/     # Context 프로바이더 - 전역 상태 관리 및 프로바이더
+│ ├── styles/        # 스타일 관련 - CSS 및 스타일 설정
+│ ├── types/         # TypeScript 타입 정의 - 전역 타입 및 인터페이스
+│ ├── utils/         # 유틸리티 함수 - 공통 헬퍼 함수들
+│ │
+│ ├── App.tsx        # page routeing
+│ └── main.tsx       # 애플리케이션 진입점
+│
+├── index.html       # HTML 진입점
+└── package.json     # 패키지 의존성 및 스크립트
+```
