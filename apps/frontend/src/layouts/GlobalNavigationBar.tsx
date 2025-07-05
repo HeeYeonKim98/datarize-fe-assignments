@@ -33,7 +33,7 @@ const GlobalNavigationBar = () => {
 
         <div className="flex space-x-2">
           {routes.map((route) => (
-            <Link to={route.path}>
+            <Link to={route.path} key={route.path}>
               <Button
                 variant={isActive(route.path) ? 'default' : 'ghost'}
                 className={cn('bg-white text-gray-900', isActive(route.path) && 'bg-gray-900 text-white')}
