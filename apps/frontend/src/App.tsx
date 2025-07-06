@@ -21,7 +21,6 @@ function App() {
               <Route path="/" element={<Navigate to="/analytics" replace />} />
               <Route path="/analytics" element={<AnalyticsPage />} />
               <Route path="/customers" element={<CustomersPage />} />
-              <Route path="/customers/:id" element={<div>고객 상세 페이지</div>} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </PageContainer>
