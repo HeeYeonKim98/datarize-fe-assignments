@@ -1,17 +1,15 @@
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 import { PurchaseFrequencyData } from '@/apis/analytics/type'
-import LoadingSpinner from '@/components/loading/LoadingSpinner'
 import getRangeLabel from '../../util/getRangeLabel'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 type Props = {
   data: PurchaseFrequencyData
-  isLoading: boolean
 }
 
-const BarChart = ({ data, isLoading }: Props) => {
+const BarChart = ({ data }: Props) => {
   const chartData = {
     labels: data.map((item) => getRangeLabel(item.range)),
     datasets: [
@@ -51,10 +49,6 @@ const BarChart = ({ data, isLoading }: Props) => {
   }
 
   const renderChartContent = () => {
-    if (isLoading) {
-      return <LoadingSpinner />
-    }
-
     if (!data?.length) {
       return (
         <div className="h-full flex items-center justify-center">

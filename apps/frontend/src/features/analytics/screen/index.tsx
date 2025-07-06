@@ -3,6 +3,7 @@ import InfoText from '@/components/text/InfoText'
 import { Button, Input } from '@/components/ui'
 import { usePurchaseFrequencyQuery } from '../query/useAnalyticsQuery'
 import BarChart from '../component/chart/BarChart'
+import LoadingSpinner from '@/components/loading/LoadingSpinner'
 
 const Analytics = () => {
   const [from, setFrom] = useState('2024-07-01')
@@ -12,7 +13,7 @@ const Analytics = () => {
     to: '2024-07-31',
   })
 
-  const { data, isLoading } = usePurchaseFrequencyQuery(currentQuery)
+  const { data, isFetching } = usePurchaseFrequencyQuery(currentQuery)
 
   const handleFromChange = (value: string) => {
     setFrom(value)
@@ -33,6 +34,10 @@ const Analytics = () => {
       from,
       to,
     })
+  }
+
+  if (isFetching) {
+    return <LoadingSpinner />
   }
 
   return (
@@ -82,7 +87,7 @@ const Analytics = () => {
         </div>
       </div>
 
-      <BarChart data={data ?? []} isLoading={isLoading} />
+      <BarChart data={data ?? []} />
     </div>
   )
 }

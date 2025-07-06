@@ -3,7 +3,8 @@
 ## ✔️ Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 20+
 - Yarn 1.22+
 
 ### Installation & Development
@@ -24,25 +25,37 @@ yarn start-client
 ## ✔️ 구현 완료 기능
 
 ### 가격대별 구매 빈도 분석
+
 - 날짜 범위 선택을 통한 구매 데이터 필터링
 - Chart.js를 활용한 인터랙티브 바 차트
 - 가격대별 구매 빈도 시각화 (2만원 이하 ~ 10만원 이상)
-- 실시간 데이터 업데이트 및 로딩/에러 상태 관리
+- 데이터 요청에 따른 로딩 스피너 노출
+- 에러 응답에 따른 토스트 메세지 노출
 
 ### 고객 관리 시스템
+
 - 고객 목록 테이블 (ID, 이름, 구매 횟수, 총 구매 금액)
-- 실시간 이름 검색 기능
+- 고객 이름 검색 기능
+- 데이터 요청에 따른 로딩 스피너 노출
+- 검색 결과가 없을 때 (에러 응답일 때) 데이터 없음 노출
 - 프론트엔드에서 모든 컬럼 정렬 기능 구현 (오름차순/내림차순)
-- 고객 상세 정보 모달
+- 기본 정렬은 고객ID의 오름차순으로 구현
+- table row 클릭했을 때 고객 상세 정보 다이얼로그 노출
 
 ### 고객 상세 구매 내역
-- 고객별 구매 내역 상세 조회
+
+- 고객별 구매 내역 상세 조회를 다이얼로그 형태로 노출
 - 구매 날짜, 상품명, 수량, 가격 정보 표시
 - 상품 썸네일 이미지 지원
+
+### 런타임 타입 안전성
+
+- zod 라이브러리를 활용해 API 응답 스키마를 런타임에서 검증하여 타입 안전성을 보장
 
 </br>
 
 ## ✔️ Tech Stack
+
 - **Frontend Framework**: React, React DOM, React Router DOM
 - **Language**: TypeScript
 - **State Management**: TanStack Query (React Query v5)
@@ -55,6 +68,7 @@ yarn start-client
 </br>
 
 ## ✔️ Folder Structure
+
 ```
 frontend/
 ├── src/
