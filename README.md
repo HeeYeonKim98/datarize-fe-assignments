@@ -22,7 +22,11 @@ yarn start-client
 
 </br>
 
-## ✔️ 구현 완료 기능
+## ✔️ 구현
+
+### 와이어 프레임
+![와이어프레임 drawio](https://github.com/user-attachments/assets/5a29eb91-e268-4981-af3a-fca4f96173c4)
+
 
 ### 가격대별 구매 빈도 분석
 
