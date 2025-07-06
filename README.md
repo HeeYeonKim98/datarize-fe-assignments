@@ -72,6 +72,7 @@ yarn test-client
 - **UI Components**: shadcn/ui
 - **Form Validation**: zod
 - **Code Quality**: ESLint, Prettier
+- **Testing**: Jest, testing-library
 
 </br>
 
