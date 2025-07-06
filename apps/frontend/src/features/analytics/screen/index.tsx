@@ -17,16 +17,10 @@ const Analytics = () => {
 
   const handleFromChange = (value: string) => {
     setFrom(value)
-    if (new Date(value) > new Date(to)) {
-      setTo(value)
-    }
   }
 
   const handleToChange = (value: string) => {
     setTo(value)
-    if (new Date(value) < new Date(from)) {
-      setFrom(value)
-    }
   }
 
   const handleSearch = () => {

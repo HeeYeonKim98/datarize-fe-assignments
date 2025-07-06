@@ -14,7 +14,7 @@ const CustomerDetailDialog = ({ customerId, customerName, isOpen, onOpenChange }
   const { data, isFetching, error } = useCustomerDetailQuery(customerId)
 
   return (
-    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+    <Dialog open={isOpen} onOpenChange={onOpenChange} data-testid="detail-dialog">
       <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex gap-4 items-center">

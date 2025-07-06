@@ -18,6 +18,9 @@ yarn start-server
 
 # 프론트엔드 개발 서버 실행 (포트 5173)
 yarn start-client
+
+# 프론트엔드 테스트 실행
+yarn test-client
 ```
 
 </br>
@@ -25,8 +28,8 @@ yarn start-client
 ## ✔️ 구현
 
 ### 와이어 프레임
-![와이어프레임 drawio](https://github.com/user-attachments/assets/5a29eb91-e268-4981-af3a-fca4f96173c4)
 
+![와이어프레임 drawio](https://github.com/user-attachments/assets/5a29eb91-e268-4981-af3a-fca4f96173c4)
 
 ### 가격대별 구매 빈도 분석
 
